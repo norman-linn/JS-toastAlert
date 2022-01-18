@@ -10,6 +10,13 @@ const openToastAlert = () => {
   toastAlertTag.append(responseText);
   toastAlertContainerTag.append(toastAlertTag);
   toastAlertTag.style.bottom = `-${toastAlertTag.offsetHeight}px`;
+
+  return toastAlertTag;
+};
+
+const toggleToastAlertAndCopyGithubUrl = () => {
+  // toggle ToastAlert
+  const toastAlertTag = openToastAlert();
   setTimeout(() => {
     toastAlertTag.style.bottom = 0;
   }, 200);
@@ -17,11 +24,8 @@ const openToastAlert = () => {
   setTimeout(() => {
     toastAlertTag.style.bottom = `-${toastAlertTag.offsetHeight}px`;
   }, 2000);
-};
 
-const copyMyGithubUrl = () => {
-  openToastAlert();
-
+  // copy github url
   const copyText = document.querySelector(".url");
   copyText.select();
 
@@ -30,5 +34,5 @@ const copyMyGithubUrl = () => {
 };
 
 buttonTag.addEventListener("click", () => {
-  copyMyGithubUrl();
+  toggleToastAlertAndCopyGithubUrl();
 });
